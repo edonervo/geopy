@@ -18,10 +18,10 @@ def main():
     map_height = 300
 
     # Define the bounding box of the main plygon (Colorado State)
-    minx = min([city[POINTS][0] for city in cities])
-    maxx = max([city[POINTS][0] for city in cities])
-    miny = min([city[POINTS][1] for city in cities])
-    maxy = max([city[POINTS][1] for city in cities])
+    minx = min(point[0] for point in state[POINTS])
+    maxx = max(point[0] for point in state[POINTS])
+    miny = min(point[1] for point in state[POINTS])
+    maxy = max(point[1] for point in state[POINTS])
     # print(minx, maxx, miny, maxy)
 
     # Calculate the ration of state against canvas
@@ -58,7 +58,7 @@ def main():
     t.write(state[NAME], align='center', font=("Arial", 16, "bold"))
     t.done()
 
-    #
+    # render the
     
         
 
