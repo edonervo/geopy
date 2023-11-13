@@ -14,7 +14,7 @@ def main():
     cities.append(["DURANGO",[-107.88,37.28], 17069])
 
     # Map size
-    map_width = 400
+    map_width = 800
     map_height = 300
 
     # Define the bounding box of the main plygon (Colorado State)
@@ -43,6 +43,13 @@ def main():
     
     # Render the State
     window = t.Screen() # screen obj
+    # TODO: How to force it to go in a display?
+    # window_width = window.window_width()
+    # window_height = window.window_height()
+    # window.setup(width=window_width, height=window_height)
+    # screen_x = 0
+    # screen_y = 0
+    # window.setworldcoordinates(screen_x, screen_y, window_width, window_height)
     window.title("Simple GIS")
     t.up() # move the cursor up, it will not draw
     first_pixel = None
@@ -56,23 +63,31 @@ def main():
     t.up()
     t.goto([0, 0])
     t.write(state[NAME], align='center', font=("Arial", 16, "bold"))
+
+    # render the cities
+    for city in cities:
+        pixel = convert(city[POINTS])
+        t.up()  
+        t.goto(pixel)
+        # Place a point for the city
+        t.dot(10)
+        # Label the city
+        t.write(city[NAME] + ", Pop.: " + str(city[POP]), align="left")
+        t.up()
+
+    # Spatial Query: which has the largest population?
+    biggest_city = max(cities, key=lambda city:city[POP])
+    t.goto(0, -200)  
+    t.write('The biggest city is: ' + biggest_city[NAME])
+
+    # Spatial Query: which has the largest population?
+    western_city = min(cities, key=lambda city:city[POINTS])
+    t.goto(0, -220) 
+    t.write('The most western city is: ' + western_city[NAME])
+
+
+    t.pen(shown=False)
     t.done()
-
-    # render the
-    
-        
-
-
-
-        
-    
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
