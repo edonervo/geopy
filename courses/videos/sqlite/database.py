@@ -70,20 +70,60 @@ def main():
         # item
     # -----------------------------------
 
-    # UPDATE RECORDS
+    # UPDATE RECORDS - better to use id
     # -----------------------------------
-    c.execute("""
-        UPDATE customers SET first_name = "BoB"
-        WHERE last_name = "Elder"
-""")
+#     c.execute("""
+#         UPDATE customers SET first_name = "BoB"
+#         WHERE last_name = "Elder"
+# """)
 
-    c.execute('SELECT rowid, * FROM customers')
+#     c.execute('SELECT rowid, * FROM customers')
 
-    items = c.fetchall()
+#     items = c.fetchall()
 
-    for item in items:
-        print(item)
+#     for item in items:
+#         print(item)
     # -----------------------------------
+
+    # DELETE records
+    # -----------------------------------
+#     c.execute("""
+#         DELETE from customers WHERE rowid = 6
+# """)
+
+#     c.execute('SELECT rowid, * FROM customers')
+
+#     items = c.fetchall()
+
+#     for item in items:
+#         print(item)
+    # -----------------------------------
+
+
+    # ORDER results with Order By
+    # -----------------------------------
+
+    # c.execute('SELECT rowid, * FROM customers ORDER BY last_name DESC')
+
+    # items = c.fetchall()
+
+    # for item in items:
+    #     print(item)
+    # -----------------------------------
+
+    # Drop Table
+    # -----------------------------------
+
+    # c.execute('DROP TABLE customers')
+
+    # items = c.fetchall()
+
+    # for item in items:
+    #     print(item)
+    # -----------------------------------
+
+    # APP
+    
 
     # The commit command actually execute the commands
     conn.commit()
